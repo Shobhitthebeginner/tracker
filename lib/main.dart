@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'home.dart';
-import 'n.dart';
+import 'schedule your mentor.dart';
 void main() {
   runApp(App());
 }
@@ -12,7 +12,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
 
-      home: Home(),
+      home: ScheduleYourMentor(),
 
     );
   }
