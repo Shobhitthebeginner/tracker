@@ -23,135 +23,137 @@ class _HomeState extends State<Home> {
             ),
           ],
       ),
-      body: Padding(
-        padding: EdgeInsets.all(0),
-
-        child:Row(
-          children: <Widget>[
-            Expanded(
-                flex: 8,
-                child: Container(
-                width: 500,
-              height: 50,
-              child: Center(
-                  child: Text(
-                'CALENDER',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-          ),
-        ),
-        decoration: BoxDecoration(
-          color: Colors.blueAccent,
-          borderRadius: BorderRadius.circular(0),
-        ),
-      )
-            ),
-            Expanded(
-              flex: 1,
-              child:Container(
-                height: 50,
-                width: 64,
-                child: PopupMenuButton<int>(
-                  color: Colors.white,
-                  itemBuilder: (context) => [
-
-                    PopupMenuItem<int>(
-
-                        value: 0,
-                        child:Row(
-                          children: [
-                            Icon(
-                              Icons.schedule,
-                              color: Colors.blueAccent,
-                            ),
-                            const SizedBox(
-                              width: 7,
-                            ),
-                            Text("Schedule Your Mentor")
-                          ],
-                        )
-
-
-                    ),
-                    PopupMenuDivider(
-
-                    ),
-                    PopupMenuItem<int>(
-                        value: 1, child:Row(
-                      children: [
-                        Icon(
-                          Icons.check,
-                          color: Colors.blueAccent,
+      body: Column(
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              Expanded(
+                  flex: 8,
+                  child: Container(
+                    width: 500,
+                    height: 50,
+                    child: Center(
+                      child: Text(
+                        'CALENDER',
+                        style: TextStyle(
+                          color: Colors.white,
                         ),
-                        const SizedBox(
-                          width: 7,
-                        ),
-                        Text("My Tasks")
-                      ],
-                    )),
-                    PopupMenuDivider(
-
+                      ),
                     ),
-                    PopupMenuItem<int>(value: 2, child: Row(
-                    children: [
-                    Icon(
-                    Icons.calendar_today,
+                    decoration: BoxDecoration(
                       color: Colors.blueAccent,
+                      borderRadius: BorderRadius.circular(0),
                     ),
-                    const SizedBox(
-                      width: 7,
-                    ),
-                    Text("My Calender"),
-                  ],
-                )),
-                    PopupMenuDivider(
-
-                    ),
-                    PopupMenuItem<int>(value: 2, child:Row(
-                    children: [
-                    Icon(
-                    Icons.schedule,
-                      color: Colors.blueAccent,
-                    ),
-              const SizedBox(
-                width: 7,
-              ),
-              Text("My Progress")
-              ],
-            )),
-                    PopupMenuDivider(
-
-                    ),
-                    PopupMenuItem<int>(value: 2, child:Row(
-                    children: [
-                    Icon(
-                    Icons.bar_chart,
-                    color: Colors.blueAccent,
-                    ),
-                    const SizedBox(
-                    width: 7,
-                    ),
-                    Text("My badges"),
-                    ],
-                    )),
-
-
-                  ],
-                  onSelected: (item) => SelectedItem(context, item),
-                ),
-                  decoration: BoxDecoration(
-                    color: Colors.blueAccent,
-                    borderRadius: BorderRadius.circular(0),
                   )
+              ),
+              Expanded(
+                  flex: 1,
+                  child:Container(
+                      height: 50,
+                      width: 64,
+                      child: PopupMenuButton<int>(
+                        color: Colors.white,
+                        itemBuilder: (context) => [
+
+                          PopupMenuItem<int>(
+
+                              value: 0,
+                              child:Row(
+                                children: [
+                                  Icon(
+                                    Icons.schedule,
+                                    color: Colors.blueAccent,
+                                  ),
+                                  const SizedBox(
+                                    width: 7,
+                                  ),
+                                  Text("Schedule Your Mentor")
+                                ],
+                              )
+
+
+                          ),
+                          PopupMenuDivider(
+
+                          ),
+                          PopupMenuItem<int>(
+                              value: 1, child:Row(
+                            children: [
+                              Icon(
+                                Icons.check,
+                                color: Colors.blueAccent,
+                              ),
+                              const SizedBox(
+                                width: 7,
+                              ),
+                              Text("My Tasks")
+                            ],
+                          )),
+                          PopupMenuDivider(
+
+                          ),
+                          PopupMenuItem<int>(value: 2, child: Row(
+                            children: [
+                              Icon(
+                                Icons.calendar_today,
+                                color: Colors.blueAccent,
+                              ),
+                              const SizedBox(
+                                width: 7,
+                              ),
+                              Text("My Calender"),
+                            ],
+                          )),
+                          PopupMenuDivider(
+
+                          ),
+                          PopupMenuItem<int>(value: 2, child:Row(
+                            children: [
+                              Icon(
+                                Icons.schedule,
+                                color: Colors.blueAccent,
+                              ),
+                              const SizedBox(
+                                width: 7,
+                              ),
+                              Text("My Progress")
+                            ],
+                          )),
+                          PopupMenuDivider(
+
+                          ),
+                          PopupMenuItem<int>(value: 2, child:Row(
+                            children: [
+                              Icon(
+                                Icons.bar_chart,
+                                color: Colors.blueAccent,
+                              ),
+                              const SizedBox(
+                                width: 7,
+                              ),
+                              Text("My badges"),
+                            ],
+                          )),
+
+
+                        ],
+                        onSelected: (item) => SelectedItem(context, item),
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.blueAccent,
+                        borderRadius: BorderRadius.circular(0),
+                      )
+                  )
+
+
               )
 
+            ],
 
-            )
+          ),
+        ],
 
-          ],
 
-        ),
 
 
 
