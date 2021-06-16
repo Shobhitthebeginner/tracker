@@ -1,88 +1,85 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'dart:math';
 
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class AddTask extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
-    );
-  }
+  _AddTaskState createState() => _AddTaskState();
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _AddTaskState extends State<AddTask> {
   @override
   Widget build(BuildContext context) {
+    var currDt = DateTime.now();
+    var listOfDay = new List.generate(
+        daysInMonth(currDt),
+            (i) =>
+        "${DateFormat('EEEE').format(currDt.add(Duration(days: i - 1)))}");
+    var listOfDates = new List.generate(
+        daysInMonth(currDt),
+            (i) =>
+        i+1);
+    final _random = Random();
+
+    print(listOfDates);
+
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text("Materate"),
-          actions: [
-            Theme(
-              data: Theme.of(context).copyWith(
-                  textTheme: TextTheme().apply(bodyColor: Colors.black),
-                  dividerColor: Colors.white,
-                  iconTheme: IconThemeData(color: Colors.white)),
-              child: PopupMenuButton<int>(
-                color: Colors.black,
-                itemBuilder: (context) => [
-                  PopupMenuItem<int>(value: 0, child: Text("Setting")),
-                  PopupMenuItem<int>(
-                      value: 1, child: Text("Privacy Policy page")),
-                  PopupMenuDivider(),
-                  PopupMenuItem<int>(
-                      value: 2,
-                      child: Row(
+      body: ListView.builder(
+          itemCount: listOfDates.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Padding(
+
+              padding: EdgeInsets.all(10),
+              child: Container(
+                height: 40,
+                decoration: BoxDecoration(
+
+                  color: Colors.primaries[_random.nextInt(Colors.primaries.length)]
+                  [_random.nextInt(9) * 100],
+                  border: Border.all(color: Colors.black),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(150.0),
+                    bottomLeft: Radius.circular(150.0),
+                  ),
+
+
+                ),
+                child: Row(
+
+                  children: [
+                    Expanded(
+                      flex: 4,
+                      child: Column(
                         children: [
-                          Icon(
-                            Icons.logout,
-                            color: Colors.red,
-                          ),
-                          const SizedBox(
-                            width: 7,
-                          ),
-                          Text("Logout")
+                          Text("${listOfDates[index]}",textAlign: TextAlign.left),
+                          Text("${listOfDay[index]}",textAlign: TextAlign.left),
                         ],
-                      )),
-                ],
-                onSelected: (item) => SelectedItem(context, item),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 10,
+                      child: FlatButton(
+                        onPressed: (){},
+                        child: Text(
+                          "Add Your Task",
+                          textAlign: TextAlign.center,
+
+                          style: TextStyle(color: Colors.black, fontSize: 15),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-        body: Container()
+            );
+          }),
     );
   }
+}
 
-  void SelectedItem(BuildContext context, item) {
-    switch (item) {
-      case 0:
-        //Navigator.of(context)
-            //.push(MaterialPageRoute(builder: (context) => SettingPage()));
-        break;
-      case 1:
-        print("Privacy Clicked");
-        break;
-      case 2:
-        print("User Logged out");
-        //Navigator.of(context).pushAndRemoveUntil(
-          //  MaterialPageRoute(builder: (context) => LoginPage()),
-            //    (route) => false);
-        break;
-    }
-  }
+int daysInMonth(DateTime date) {
+  var firstDayThisMonth = new DateTime(date.year, date.month, date.day);
+  var firstDayNextMonth = new DateTime(firstDayThisMonth.year,
+      firstDayThisMonth.month + 1, firstDayThisMonth.day);
+  return firstDayNextMonth.difference(firstDayThisMonth).inDays;
 }
