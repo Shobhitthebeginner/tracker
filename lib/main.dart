@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:tracker/add%20task.dart';
 import 'package:tracker/add task.dart';
 import 'package:tracker/mytasks.dart';
+import 'package:tracker/selecttime.dart';
 import 'home.dart';
 import 'schedule your mentor.dart';
+import 'grades.dart';
+import 'selecttime.dart';
 void main() {
   runApp(App());
 }
@@ -15,7 +18,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
 
-      home: MyTasks(),
+      home: SelectTime(),
 
     );
   }
