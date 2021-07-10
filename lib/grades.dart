@@ -9,6 +9,7 @@ class Grades extends StatefulWidget {
 
 class _GradesState extends State<Grades> {
   @override
+  var initialRatin=42;
   final va=RatingBar.builder(
     initialRating: 42,
     minRating: 1,
@@ -17,30 +18,51 @@ class _GradesState extends State<Grades> {
     itemSize: 70,
     itemCount: 40,
     itemPadding: EdgeInsets.symmetric(horizontal: 2.0),
-    itemBuilder: (context, _) => Column(
-      children: <Widget>[
-        Image.asset('images/star.png',width: 60,height: 60),
-      ],
+    itemBuilder: (context, _) => Container(
+      decoration: BoxDecoration(
+        color: Colors.yellowAccent,
+      ),
+      child: Column(
+        children: <Widget>[
+          Image.asset('images/star.png',width: 60,height: 60),
+        ],
+      ),
     ),
 
-      onRatingUpdate: (rating) {},
+      onRatingUpdate: (rating) {
+
+      },
   );
 
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-
-        Expanded(
-
-          child: Center(
-            child: Container(
-              width: 400,
-              child: va,
-            ),
+    return Scaffold(
+        body: Container(
+          decoration: BoxDecoration(
+            color: Colors.yellowAccent.withOpacity(0.4),
           ),
+          child: Column(
+          children: <Widget>[
+            Center(
+              child: Text(
+                'Rohan You have achieved $initialRatin awards',
+              ),
+            ),
+            Expanded(
 
+              child: Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.yellowAccent,
+                  ),
+                  width: 400,
+                  child: va,
+                ),
+              ),
+
+          ),
+      ],
       ),
-    ],
+        ),
     );
   }
 }
